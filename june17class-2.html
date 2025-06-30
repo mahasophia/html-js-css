@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Exception Handling</title>
+</head>
+<body>
+  <h1>Throw Exception</h1>
+
+  <script>
+    try {
+      let numbers = [1, 2, 3, null, 5];
+      let result = numbers.map(num => {
+        if (num === null) {
+          throw new Error("Null value cannot be handled");
+        }
+        return num * 2;
+      });
+      console.log("Result:", result);
+    } catch (error) {
+      console.error("Exception:", error.message);
+    }
+  </script>
+</body>
+</html>

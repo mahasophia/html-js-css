@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>FILTERS</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular.min.js"></script>
+</head>
+<body style="background-color:#e4007c;"ng-app="">
+    <label>select role:</label>
+	<select ng-model="role">
+	   <option value="admin">Admin</option>
+	   <option value="user">USer</option>
+	   <option value="guest">Guest</option>
+	</select>
+	<div ng-switch="role">
+	   <p ng-switch-when="admin">Hello ,Admin!</p>
+	   <p ng-switch-when="user">Hello ,user!</p>
+	   <p ng-switch-default>welcome ,Guest!</p>
+	 </div>
+	
+	   
+</body>
+</html>
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   

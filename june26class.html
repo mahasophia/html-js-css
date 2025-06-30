@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> angular filters </title>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	</head>
+	<body style="background-color:#800080;">
+	    <div ng-app="app1" ng-controller="c1">
+		    Original string : <p style="color:black;"> {{name}} </p> <br><br>
+            removeVowels string : <p style="color:black;"> {{name | removeVowels}} </p>			
+		</div>
+		<script>
+		    var app = angular.module("app1",[]);
+			app.controller("c1" , function($scope)
+			{
+			    $scope.name = "sophia";
+			});
+			
+			app.filter('removeVowels' , function()
+			{
+			    return function(input)
+				{
+				     if(!input) return ' ';
+				     return input.replace(/[aeiouAEIOU]/g,' ');
+				};
+			});
+		</script>
+	</body>
+</html>

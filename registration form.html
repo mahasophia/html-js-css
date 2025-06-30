@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Employee Registration Form</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<body style="background-color:lightblue">
+<form method="post" enctype"multipart/form-data">
+</head>
+<body>
+<h2 style="text-align: center;">Employee Registration Form</h2>
+<form method="POST" action="/" enctype="multipart/form-data">
+<label for="name">Full Name:</label>
+<input type="text" id="name" name="name" required>
+<br></br>
+<label for="mail">Email:</label>
+<input type="email" id="mail" name="mail" required>
+<br></br>
+<label for="phone">Phone Number:</label>
+<input type="number" id="phone" name="phone" required>
+<br></br>
+<label>Gender:</label>
+<input type="radio" id="male" name="gender" value="Male" required> Male
+<input type="radio" id="female" name="gender" value="Female"> Female
+<input type="radio" id="other" name="gender" value="Other"> Other
+<br></br>
+<label>Skills:</label>
+<input type="checkbox" name="skills" value="Python"> Python
+<input type="checkbox" name="skills" value="JavaScript"> JavaScript
+<input type="checkbox" name="skills" value="Java"> Java
+<input type="checkbox" name="skills" value="C++"> C++
+<br></br>
+<label for="department">Department:</label>
+<select id="department" name="department">
+<option value="HR">HR</option>
+<option value="IT">IT</option>
+<option value="Finance">Finance</option>
+<option value="Marketing">Marketing</option>
+<br></br>
+</select>
+<label for="file">Profile Picture:</label>
+<input type="file" id="file" name="file">
+<br></br>
+<label for="date">Date of Joining:</label>
+<input type="date" id="date" name="date" required>
+<br></br>
+<input type="submit" value="Submit" class="btn">
+<div class="link-container">
+<p>For more employment-related resources, visit: <br>
+<a href="https://www.tnvelaivaaippu.gov.in/Empower/" target="_blank">
+        TN Velaivaaippu Portal
+</a>
+</p>
+</div>
+
+
+</form>
+</body>
+</html>

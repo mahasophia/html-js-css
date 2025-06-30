@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Toggle Click Event Listener</title>
+  <style>
+    body {
+      background-color: #f0f0f0;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 50px;
+    }
+    #square {
+      width: 200px;
+      height: 200px;
+      background-color: lightgray;
+      margin: 20px auto;
+      line-height: 200px;
+      font-weight: bold;
+      border: 2px solid #333;
+    }
+    button {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🎨 Toggle Color Change on Click</h2>
+  <div id="square">Click Me!</div>
+
+  <button onclick="startColorChange()">Start</button>
+  <button onclick="stopColorChange()">Stop</button>
+
+  <script>
+    const square = document.getElementById("square");
+
+    function getRandomColor() {
+      const letters = "0123456789ABCDEF";
+      let color = "#";
+      for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+      }
+      return color;
+    }
+
+    function changeColor() {
+      square.style.backgroundColor = getRandomColor();
+    }
+
+    function startColorChange() {
+      square.addEventListener("click", changeColor);
+    }
+
+    function stopColorChange() {
+      square.removeEventListener("click", changeColor);
+    }
+  </script>
+
+</body>
+</html>

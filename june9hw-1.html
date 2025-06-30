@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Online Bookstore Admin</title>
+  <style>
+    body {
+      background-color: beige;
+      font-family: Arial, sans-serif;
+    }
+
+    #dashboardTitle {
+      background-color: darkblue;
+      color: white;
+      padding: 15px;
+      text-align: center;
+    }
+
+    #bookSection {
+      background-color:pink;
+      padding: 10px;
+      margin: 10px 0;
+    }
+
+    .book-item {
+      background-color:purple;
+      padding: 5px;
+      margin-bottom: 5px;
+    }
+
+    ul {
+      background-color:lightgreen;
+      padding: 10px;
+    }
+
+    li {
+      color: blue;
+      background-color:lightred;
+      padding: 4px;
+      margin: 2px 0;
+    }
+
+    #statusPanel {
+      background-color:lightblue;
+      padding: 10px;
+      margin-top: 10px;
+    }
+
+    .status {
+      background-color:orange;
+      padding: 5px;
+      margin: 4px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Title Section -->
+  <h1 id="dashboardTitle">Admin Dashboard - Online Bookstore</h1>
+
+  <!-- Book Listings -->
+  <section id="bookSection">
+    <h2>Books</h2>
+    <div class="book-item">The Great Gatsby</div>
+    <div class="book-item">1984</div>
+    <div class="book-item">To Kill a Mockingbird</div>
+  </section>
+
+  <!-- Categories -->
+  <section>
+    <h2>Categories</h2>
+    <ul>
+      <li>Fiction</li>
+      <li>Non-fiction</li>
+      <li>Science</li>
+      <li>Biography</li>
+    </ul>
+  </section>
+
+  <!-- Status Panel -->
+  <section id="statusPanel">
+    <h2>Status Panel</h2>
+    <div class="status">Inventory updated</div>
+    <div class="status">New order received</div>
+    <div class="status">Low stock alert</div>
+  </section>
+
+  <script>
+    // a) Get dashboard title and log it
+    const title = document.getElementById("dashboardTitle");
+    console.log("Dashboard Title:", title.textContent);
+
+    // b) Get all book items and log count
+    const books = document.getElementsByClassName("book-item");
+    console.log("Total Books:", books.length);
+
+    // c) Get and print all status messages
+    const statusMessages = document.getElementsByClassName("status");
+    console.log("Status Messages:");
+    for (let i = 0; i < statusMessages.length; i++) {
+      console.log("-", statusMessages[i].textContent);
+    }
+
+    // d) Change all <li> text color to blue (already in CSS)
+    const listItems = document.getElementsByTagName("li");
+    for (let i = 0; i < listItems.length; i++) {
+      listItems[i].style.color = "blue"; // optional since CSS handles it
+    }
+  </script>
+
+</body>
+</html>

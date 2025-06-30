@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ATM Simulator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color:#191970;
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      background-color:#e6be8a;
+      border: 2px solid #0288d1;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 350px;
+    }
+
+    input, button {
+      padding: 10px;
+      width: 90%;
+      margin: 8px 0;
+      font-size: 16px;
+    }
+
+    button {
+      background-color: #0288d1;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background-color: #0277bd;
+    }
+
+    #output {
+      background-color: #e0f7fa;
+      border: 1px solid #00796b;
+      padding: 15px;
+      margin-top: 15px;
+      height: 150px;
+      overflow-y: auto;
+      white-space: pre-line;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>ATM Withdrawal Simulator</h2>
+
+    <input type="text" id="username" placeholder="Enter your name"><br>
+    <input type="number" id="amount" placeholder="Enter amount to withdraw"><br>
+    <button onclick="startWithdrawal()">Withdraw</button>
+
+    <div id="output"></div>
+  </div>
+
+  <script>
+    let accountBalance = 5000;
+
+    function log(message) {
+      const output = document.getElementById("output");
+      output.textContent += message + "\n";
+      output.scrollTop = output.scrollHeight;
+    }
+
+    function startWithdrawal() {
+      const user = document.getElementById("username").value.trim();
+      const amount = parseInt(document.getElementById("amount").value);
+
+      if (!user || isNaN(amount) || amount <= 0) {
+        alert("Please enter a valid name and amount.");
+        return;
+      }
+
+      log(`\nUser '${user}' is trying to withdraw ₹${amount}...📌`);
+      log("Checking account balance...");
+
+      setTimeout(() => {
+        if (accountBalance >= amount) {
+          log("😊Sufficient balance available.");
+
+          setTimeout(() => {
+            log(`Processing withdrawal of ₹${amount}...`);
+            accountBalance -= amount;
+
+            setTimeout(() => {
+              log("Withdrawal successful👍!");
+              log(`Remaining Balance: ₹${accountBalance}`);
+            }, 1000);
+
+          }, 1000);
+
+        } else {
+          setTimeout(() => {
+            log("Insufficient balance. Transaction declined👎.");
+          }, 1000);
+        }
+      }, 1000);
+    }
+  </script>
+
+</body>
+</html>

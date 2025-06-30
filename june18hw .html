@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>School Dashboard</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #ffd6ec, #c2f0f7);
+      padding: 30px;
+    }
+
+    h2 {
+      color: #222;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin: 10px 0 5px;
+    }
+
+    input, button {
+      padding: 10px;
+      margin-bottom: 10px;
+      width: 100%;
+      max-width: 500px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    button {
+      background-color: #0066cc;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #004080;
+    }
+
+    #output {
+      margin-top: 30px;
+    }
+
+    .student-card {
+      background-color: white;
+      border-left: 6px solid #0099cc;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .student-card h3 {
+      margin-top: 0;
+      color: #333;
+    }
+
+    ul {
+      margin-top: 5px;
+      padding-left: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🧑‍🏫 School Dashboard</h2>
+
+  <label>Student Name:
+    <input type="text" id="name" />
+  </label>
+
+  <label>Age:
+    <input type="number" id="age" />
+  </label>
+
+  <label>Guardian Name:
+    <input type="text" id="guardianName" />
+  </label>
+
+  <label>Guardian Phone (Optional):
+    <input type="text" id="guardianPhone" />
+  </label>
+
+  <label>Subjects and Scores (e.g. Math:95, English:88):
+    <input type="text" id="subjects" size="50" />
+  </label>
+
+  <button onclick="addStudent()">➕ Add Student</button>
+
+  <div id="output">
+    <h2>📋 Student List</h2>
+  </div>
+
+  <script>
+    const students = [];
+
+    function addStudent() {
+      const name = document.getElementById("name").value.trim();
+      const age = parseInt(document.getElementById("age").value);
+      const guardianName = document.getElementById("guardianName").value.trim();
+      const guardianPhone = document.getElementById("guardianPhone").value.trim();
+      const subjectInput = document.getElementById("subjects").value.trim();
+
+      if (!name || isNaN(age) || !subjectInput) {
+        alert("Please fill in at least name, age and subject details.");
+        return;
+      }
+
+      const guardian = {
+        name: guardianName,
+        contact: {
+          phone: guardianPhone
+        }
+      };
+
+      const subjectsArray = subjectInput.split(',').map(item => {
+        const [subject, score] = item.split(':');
+        return {
+          subject: subject.trim(),
+          score: parseInt(score.trim())
+        };
+      });
+
+      const student = {
+        name,
+        age,
+        guardian,
+        subjects: [...subjectsArray]
+      };
+
+      students.push(student);
+      renderStudents();
+    }
+
+    function renderStudents() {
+      const output = document.getElementById("output");
+      output.innerHTML = "<h2>📋 Student List</h2>";
+
+      students.forEach((student, index) => {
+        const div = document.createElement("div");
+        div.className = "student-card";
+
+        const contactPhone = student.guardian?.contact?.phone || "Not Available";
+
+        div.innerHTML = `
+          <h3>${index + 1}. ${student.name} (Age: ${student.age})</h3>
+          <p><strong>Guardian Name:</strong> ${student.guardian.name || 'Not Provided'}</p>
+          <p><strong>Contact Phone:</strong> ${contactPhone}</p>
+          <p><strong>Subjects:</strong></p>
+          <ul>${student.subjects.map(sub => `<li>${sub.subject}: ${sub.score}</li>`).join('')}</ul>
+        `;
+        output.appendChild(div);
+      });
+    }
+  </script>
+
+</body>
+</html>

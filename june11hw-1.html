@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Virtual DJ Keyboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px;
+    }
+    #display {
+      font-size: 24px;
+      margin-top: 20px;
+      color: green;
+    }
+    .hint {
+      font-size: 14px;
+      color: gray;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎧 Virtual DJ Keyboard</h1>
+  <p class="hint">Press keys A, S, D, or F to play sounds</p>
+  <div id="display">Waiting for key press...</div>
+
+  <!-- Audio elements -->
+  <audio id="audioA" src="beat.mp3"></audio>
+  <audio id="audioS" src="drum.mp3"></audio>
+  <audio id="audioD" src="snare.mp3"></audio>
+  <audio id="audioF" src="effect.mp3"></audio>
+
+  <script>
+    // Key to sound mapping
+    const soundMap = {
+      'a': { audioId: 'audioA', name: 'Beat Sound' },
+      's': { audioId: 'audioS', name: 'Drum Sound' },
+      'd': { audioId: 'audioD', name: 'Snare Sound' },
+      'f': { audioId: 'audioF', name: 'Effect Sound' }
+    };
+
+    document.addEventListener('keydown', function(event) {
+      const key = event.key.toLowerCase();
+      const sound = soundMap[key];
+
+      if (sound) {
+        const audio = document.getElementById(sound.audioId);
+        audio.currentTime = 0; // restart from beginning
+        audio.play();
+        document.getElementById('display').textContent = `Playing: ${sound.name}`;
+      }
+    });
+  </script>
+
+</body>
+</html>

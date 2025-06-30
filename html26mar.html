@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animal Shapes Gallery</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e0f7fa; /* Light blue background */
+        }
+
+        .gallery-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .gallery-item {
+            margin: 20px;
+            text-align: center;
+            background-color: #ffffff; /* White background for items */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+        }
+
+        .image-frame {
+            width: 250px;
+            height: 250px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .image-frame.circle {
+            border-radius: 50%;
+        }
+
+        .image-frame.triangle {
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+        }
+
+        .image-frame.star {
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item img:hover {
+            transform: scale(1.1);
+        }
+
+        .description {
+            margin-top: 10px;
+            font-size: 0.9em;
+            color: #555;
+            max-width: 250px;
+        }
+
+        @media (max-width: 768px) {
+            .image-frame {
+                width: 200px;
+                height: 200px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .image-frame {
+                width: 150px;
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="gallery-container">
+        <div class="gallery-item">
+            <div class="image-frame circle">
+                <img src="wildlife.jpg" alt="Bear">
+            </div>
+            <div class="description">
+                <strong>Bear:</strong> Bears are large mammals found in various habitats worldwide. They are known for their powerful build, thick fur, and plantigrade posture (walking on the soles of their feet). Bears are omnivorous, with a diet ranging from berries and insects to fish and other animals. They are generally solitary animals, except during mating season or when mothers are with their cubs. Many bear species hibernate during the winter, entering a state of dormancy to conserve energy.
+            </div>
+        </div>
+
+        <div class="gallery-item">
+            <div class="image-frame triangle">
+                <img src="fox.jpg" alt="Fox">
+            </div>
+            <div class="description">
+                <strong>Fox:</strong> Foxes are small to medium-sized, omnivorous mammals belonging to the Canidae family. They are characterized by their slender build, bushy tails, pointed ears, and narrow snouts. Foxes are found on almost every continent and are known for their adaptability to various environments, from forests to urban areas. They are primarily nocturnal hunters, preying on small mammals, birds, and insects. Foxes are often portrayed as cunning and intelligent animals in folklore.
+            </div>
+        </div>
+
+        <div class="gallery-item">
+            <div class="image-frame star">
+                <img src="owl.jpeg" alt="Owl">
+            </div>
+            <div class="description">
+                <strong>Owl:</strong> Owls are nocturnal birds of prey recognized for their large, forward-facing eyes, sharp talons, and distinctive facial discs. They possess excellent hearing and vision, enabling them to hunt effectively in low-light conditions. Owls are found worldwide in diverse habitats, and their diet mainly consists of small mammals, insects, and other birds. They are known for their silent flight, achieved through specialized feathers that minimize noise.
+            </div>
+        </div>
+    </div>
+</body>
+</html>

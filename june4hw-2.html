@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mobile Plan Billing System</title>
+  <style>
+    body {
+      background: linear-gradient(to right, #e0f7fa, #ffe0b2);
+      font-family: Arial, sans-serif;
+      padding: 40px;
+    }
+
+    h2 {
+      color: #00695c;
+    }
+
+    .result {
+      margin-top: 20px;
+      padding: 10px;
+      border: 2px solid #00838f;
+      background-color: #ffffff;
+      border-radius: 8px;
+      font-size: 18px;
+    }
+
+    .button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      color: white;
+      background-color: #00838f;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    input {
+      padding: 5px;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Mobile Network Plan Selector</h2>
+
+  <label>Customer Name:</label><br>
+  <input type="text" id="custName" placeholder="Enter your name"><br>
+
+  <label>Customer ID:</label><br>
+  <input type="text" id="custID" placeholder="Enter your ID"><br>
+
+  <label>Enter Plan Code (A, B, C, D):</label><br>
+  <input type="text" id="planCode" placeholder="Enter A, B, C or D"><br>
+
+  <button class="button" onclick="showPlanDetails()">Show Plan Details</button>
+
+  <div class="result" id="output"></div>
+
+  <script>
+    function showPlanDetails() {
+      let name = document.getElementById("custName").value;
+      let id = document.getElementById("custID").value;
+      let code = document.getElementById("planCode").value.toUpperCase();
+      let message = `<strong>Customer Name:</strong> ${name}<br><strong>Customer ID:</strong> ${id}<br><br>`;
+
+      switch (code) {
+        case "A":
+          message += "<strong>Plan Name:</strong> Basic Plan<br><strong>Price:</strong> $10<br><strong>Data Limit:</strong> 1 GB/month";
+          break;
+        case "B":
+          message += "<strong>Plan Name:</strong> Standard Plan<br><strong>Price:</strong> $20<br><strong>Data Limit:</strong> 5 GB/month";
+          break;
+        case "C":
+          message += "<strong>Plan Name:</strong> Premium Plan<br><strong>Price:</strong> $30<br><strong>Data Limit:</strong> 15 GB/month";
+          break;
+        case "D":
+          message += "<strong>Plan Name:</strong> Unlimited Plan<br><strong>Price:</strong> $50<br><strong>Data Limit:</strong> Unlimited";
+          break;
+        default:
+          message = "<span style='color: red;'><strong>Invalid plan code. Please enter A, B, C, or D.</strong></span>";
+      }
+
+      document.getElementById("output").innerHTML = message;
+    }
+  </script>
+
+</body>
+</html>

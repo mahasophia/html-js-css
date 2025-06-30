@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Product Filter</title>
+  <style>
+    body {
+      background: linear-gradient(to right, #f8bbd0, #b2ebf2);
+      font-family: 'Segoe UI', sans-serif;
+      padding: 30px;
+      color: #333;
+    }
+
+    h2 {
+      color: #880e4f;
+    }
+
+    .product {
+      background-color: #fff3e0;
+      border: 2px solid #ff7043;
+      border-radius: 10px;
+      padding: 15px;
+      margin: 10px 0;
+      font-size: 18px;
+    }
+
+    .count {
+      background-color: #c8e6c9;
+      border: 2px solid #388e3c;
+      border-radius: 10px;
+      padding: 15px;
+      margin-top: 20px;
+      font-weight: bold;
+      color: #1b5e20;
+      font-size: 20px;
+    }
+
+    .button {
+      background-color: #ff7043;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Products Costing More Than Rs.50</h2>
+  <button class="button" onclick="filterProducts()">Click to Show Products</button>
+
+  <div id="productList"></div>
+  <div id="countDisplay" class="count"></div>
+
+  <script>
+    const products = [
+      { name: "Notebook", price: 30 },
+      { name: "Pen", price: 10 },
+      { name: "Backpack", price: 300 },
+      { name: "USB Drive", price: 150 },
+      { name: "Pencil", price: 5 },
+      { name: "Headphones", price: 1200 },
+      { name: "Water Bottle", price: 60 }
+    ];
+
+    function filterProducts() {
+      let count = 0;
+      let productOutput = "";
+
+      for (let i = 0; i < products.length; i++) {
+        if (products[i].price > 50) {
+          productOutput += `<div class='product'>🛍️ ${products[i].name} - Rs.${products[i].price}</div>`;
+          count++;
+        }
+      }
+
+      document.getElementById("productList").innerHTML = productOutput;
+      document.getElementById("countDisplay").innerText = `Total Products over Rs.50: ${count}`;
+    }
+  </script>
+
+</body>
+</html>

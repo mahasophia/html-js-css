@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Marks Calculator - AngularJS</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular.min.js"></script>
+<style>
+    body {
+      font-family: Arial, sans-serif;
+      background:#cb99c9 ;
+      padding: #b48395;
+    }
+    h2 {
+      color: #33691e;
+    }
+    input {
+      padding: 8px;
+      margin: 5px;
+      width: 200px;
+      font-size: 16px;
+    }
+    .result {
+      margin-top: 20px;
+      background: #e4007c;
+      padding: 15px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body ng-app="marksApp" ng-controller="marksController">
+
+  <h2>🎓 Subject Marks Calculator</h2>
+
+  <label>Subject 1 Marks:</label><br>
+  <input type="number" ng-model="subject1"><br>
+
+  <label>Subject 2 Marks:</label><br>
+  <input type="number" ng-model="subject2"><br>
+
+  <label>Subject 3 Marks:</label><br>
+  <input type="number" ng-model="subject3"><br>
+
+  <div class="result">
+    <p><strong>Total Marks:</strong> {{getTotal()}}</p>
+    <p><strong>Average Marks:</strong> {{getAverage()}}</p>
+  </div>
+
+  <script>
+    var app = angular.module("marksApp", []);
+    app.controller("marksController", function($scope) {
+      $scope.subject1 = 0;
+      $scope.subject2 = 0;
+      $scope.subject3 = 0;
+
+      $scope.getTotal = function() {
+        return Number($scope.subject1) + Number($scope.subject2) + Number($scope.subject3);
+      };
+
+      $scope.getAverage = function() {
+        return ($scope.getTotal() / 3).toFixed(2);
+      };
+    });
+  </script>
+
+</body>
+</html>

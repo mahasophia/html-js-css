@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Flexbox Photo Gallery</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: flex-start;
+      align-content: flex-start;
+      gap: 10px;
+      padding: 10px;
+      border: 2px solid #aaa;
+      min-height: 300px;
+      transition: all 0.5s ease;
+    }
+
+    .photo {
+      width: 100px;
+      height: 100px;
+      background-color: #ccc;
+      border-radius: 10px;
+      transition: transform 0.3s;
+    }
+
+    /* Bounce animation */
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    .bounce {
+      animation: bounce 0.6s ease;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Photo Gallery Customization Panel</h1>
+
+  <div class="gallery" id="gallery">
+    <div class="photo" style="background-color: lightcoral;">photo 1</div>
+    <div class="photo" style="background-color: lightseagreen;">photo 2</div>
+    <div class="photo" style="background-color: lightblue;">photo 3</div>
+    <div class="photo" style="background-color: lightgoldenrodyellow;">photo 4</div>
+    <div class="photo" style="background-color: lightpink;">photo 4</div>
+  </div>
+
+  <button onclick="customizeGallery()">Apply Customization</button>
+
+  <script>
+    function customizeGallery() {
+      const gallery = document.getElementById("gallery");
+      const photos = document.querySelectorAll(".photo");
+
+      // Change gallery styles
+      gallery.style.alignItems = "center";
+      gallery.style.alignContent = "space-around";
+      gallery.style.backgroundColor = "lightgray";
+
+      // Apply bounce animation to each photo
+      photos.forEach(photo => {
+        photo.classList.remove("bounce"); // reset if already bouncing
+        void photo.offsetWidth; // force reflow to restart animation
+        photo.classList.add("bounce");
+      });
+    }
+  </script>
+
+</body>
+</html>

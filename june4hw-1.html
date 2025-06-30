@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Access Control System</title>
+  <style>
+    body {
+      background-color: #ffc0cb; /* Light pink */
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    h2 {
+      color: #880e4f;
+    }
+
+    .result {
+      font-weight: bold;
+      font-size: 18px;
+      color: black;
+    }
+
+    .access {
+      color: green;
+    }
+
+    .denied {
+      color: red;
+    }
+
+    .note {
+      background-color: lavender;
+      padding: 10px;
+      color: red;
+      font-weight: bold;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+
+    .button {
+      background-color: #ff69b4;
+      color: white;
+      border: 2px solid black;
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Enter Access Details</h2>
+
+  <label>Enter your name:</label>
+  <input type="text" id="name"><br><br>
+
+  <label>Enter your ID:</label>
+  <input type="text" id="email"><br><br>
+
+  <label>Enter your field:</label>
+  <input type="text" id="field"><br><br>
+
+  <input type="checkbox" id="validID"> Pls click this if u have valid id<br>
+  <input type="checkbox" id="fullTime"> Full timed<br>
+  <input type="checkbox" id="specialAccess"> spl access<br>
+  <input type="checkbox" id="suspended"> Suspended<br><br>
+
+  <button class="button" onclick="checkAccess()">Click to check</button>
+  <button class="button" onclick="fillTestCase()">Auto-fill Test Case</button><br><br>
+
+  <div class="result" id="output"></div>
+
+  <div class="note">The Test Cases are available above please check it out!!</div><br>
+
+  <script>
+    function checkAccess() {
+      let name = document.getElementById("name").value;
+      let email = document.getElementById("email").value;
+      let field = document.getElementById("field").value;
+      let hasValidID = document.getElementById("validID").checked;
+      let isFullTime = document.getElementById("fullTime").checked;
+      let hasSpecialAccess = document.getElementById("specialAccess").checked;
+      let isSuspended = document.getElementById("suspended").checked;
+
+      let accessGranted = hasValidID && (isFullTime || hasSpecialAccess) && !isSuspended;
+
+      let message = `THE EMPLOYEE NAME IS: ${name}<br>ID IS: ${email}<br>FIELD: ${field}<br>`;
+      message += accessGranted 
+        ? "<span class='access'>Access Granted</span>" 
+        : "<span class='denied'>Access Denied</span>";
+
+      document.getElementById("output").innerHTML = message;
+    }
+
+    function fillTestCase() {
+      document.getElementById("name").value = "mahalakshmi";
+      document.getElementById("email").value = "mahasophia2302@gmail.com";
+      document.getElementById("field").value = "AI";
+      document.getElementById("validID").checked = true;
+      document.getElementById("fullTime").checked = false;
+      document.getElementById("specialAccess").checked = true;
+      document.getElementById("suspended").checked = false;
+    }
+  </script>
+
+</body>
+</html>

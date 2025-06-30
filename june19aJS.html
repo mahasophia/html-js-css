@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" ng-app>
+<head>
+  <meta charset="UTF-8">
+  <title>List with AngularJS</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular.min.js"></script>
+</head>
+<body>
+  <h2>List example using AngularJS</h2>
+  <div ng-init="BeautyProducts=['lakme matte Lipstick','kajal','eyeliner','facewash','eyebrow']">
+    <ul>
+      <li ng-repeat="bp in BeautyProducts">{{$index + 1}} - {{bp}}</li>
+    </ul>
+      <p style="background-color:royalblue; color:white; padding:5px;">Total items in the list are: {{BeautyProducts.length}</p>
+  </div>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chennai Super Kings Team</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fffde7; /* Light yellow background, CSK color */
+            color: #333;
+        }
+
+        .team-section {
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .team-title {
+            font-size: 3em;
+            font-weight: bold;
+            color: #ffb800; /* Bright yellow, CSK color */
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .team-members {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .member-card {
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+            padding: 40px;
+            text-align: center;
+            flex: 1 1 350px;
+            min-width: 300px;
+            transition: transform 0.3s ease-in-out;
+            border: 2px solid #ffb800; /* Yellow border */
+        }
+
+        .member-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .member-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 25px;
+            border: 3px solid #ffb800; /* Yellow border */
+        }
+
+        .member-name {
+            font-size: 1.6em;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #000; /* Black name */
+        }
+
+        .member-role {
+            font-size: 1.1em;
+            color: #555;
+        }
+
+        @media (max-width: 768px) {
+            .member-card {
+                flex: 1 1 300px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .member-card {
+                flex: 1 1 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="team-section">
+        <h2 class="team-title">Chennai Super Kings</h2>
+        <div class="team-members">
+            <div class="member-card">
+                <img src="dhoni.jpeg" alt="MS Dhoni" class="member-image">
+                <h3 class="member-name">MS Dhoni</h3>
+                <p class="member-role">Captain & Wicket-keeper</p>
+            </div>
+            <div class="member-card">
+                <img src="Ruturaj Gaikwad.jpeg" alt="Ruturaj Gaikwad" class="member-image">
+                <h3 class="member-name">Ruturaj Gaikwad</h3>
+                <p class="member-role">Batsman</p>
+            </div>
+            <div class="member-card">
+                <img src="Ravindra Jadeja.jpeg" alt="Ravindra Jadeja" class="member-image">
+                <h3 class="member-name">Ravindra Jadeja</h3>
+                <p class="member-role">All-Rounder</p>
+            </div>
+            <div class="member-card">
+                <img src="Deepak Chahar.jpeg" alt="Deepak Chahar" class="member-image">
+                <h3 class="member-name">Deepak Chahar</h3>
+                <p class="member-role">Bowler</p>
+            </div>
+            <div class="member-card">
+                <img src="Ravichandran Ashwin.jpeg" alt="Ravichandran Ashwin" class="member-image">
+                <h3 class="member-name">Ravichandran Ashwin</h3>
+                <p class="member-role">Bowler</p>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

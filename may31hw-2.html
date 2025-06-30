@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>About Us - Corporate Site</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <style>
+    .avatar {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body class="bg-light p-4">
+
+  <!-- FAQ Section -->
+  <div class="container mb-5">
+    <h4 class="mb-4">Frequently Asked Questions</h4>
+    <div class="accordion" id="faqAccordion">
+
+      <div class="accordion-item mb-3">
+        <h2 class="accordion-header" id="faq1">
+          <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1">
+            <i class="fas fa-question-circle me-2 text-primary"></i> What services do you offer?
+          </button>
+        </h2>
+        <div id="collapse1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+          <div class="accordion-body text-muted">
+            We offer web development, cloud solutions, and mobile app design tailored for enterprise needs.
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item mb-3">
+        <h2 class="accordion-header" id="faq2">
+          <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2">
+            <i class="fas fa-envelope-open-text me-2 text-success"></i> How can I contact support?
+          </button>
+        </h2>
+        <div id="collapse2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body text-muted">
+            You can reach our 24/7 support team via email or live chat on our website.
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="faq3">
+          <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3">
+            <i class="fas fa-shield-alt me-2 text-danger"></i> Is my data safe with you?
+          </button>
+        </h2>
+        <div id="collapse3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body text-muted">
+            Absolutely. We use enterprise-grade security measures and encrypted data storage.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Team Section -->
+  <div class="container">
+    <h4 class="mb-4">Meet Our Team</h4>
+
+    <!-- Alice -->
+    <div class="d-flex align-items-start mb-4">
+      <img src="https://via.placeholder.com/60" alt="Alice" class="rounded-circle me-3 avatar">
+      <div>
+        <strong>Alice Johnson</strong><br>
+        <span class="text-muted">Lead Developer</span>
+        <p class="mt-2 text-muted">Alice specializes in full-stack development and leads major project architectures.</p>
+        <a href="https://linkedin.com" class="me-2 text-decoration-none"><i class="fab fa-linkedin fa-lg"></i></a>
+        <a href="mailto:alice@example.com" class="text-decoration-none"><i class="fas fa-envelope fa-lg"></i></a>
+      </div>
+    </div>
+
+    <!-- Bob -->
+    <div class="d-flex align-items-start mb-4">
+      <img src="https://via.placeholder.com/60" alt="Bob" class="rounded-circle me-3 avatar">
+      <div>
+        <strong>Bob Smith</strong><br>
+        <span class="text-muted">UI/UX Designer</span>
+        <p class="mt-2 text-muted">Bob crafts beautiful, intuitive user experiences for our applications.</p>
+        <a href="https://linkedin.com" class="me-2 text-decoration-none"><i class="fab fa-linkedin fa-lg"></i></a>
+        <a href="mailto:bob@example.com" class="text-decoration-none"><i class="fas fa-envelope fa-lg"></i></a>
+      </div>
+    </div>
+
+    <!-- Clara -->
+    <div class="d-flex align-items-start mb-4">
+      <img src="https://via.placeholder.com/60" alt="Clara" class="rounded-circle me-3 avatar">
+      <div>
+        <strong>Clara Lee</strong><br>
+        <span class="text-muted">Cloud Architect</span>
+        <p class="mt-2 text-muted">Clara designs scalable cloud infrastructure for enterprise clients.</p>
+        <a href="https://linkedin.com" class="me-2 text-decoration-none"><i class="fab fa-linkedin fa-lg"></i></a>
+        <a href="mailto:clara@example.com" class="text-decoration-none"><i class="fas fa-envelope fa-lg"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

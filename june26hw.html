@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="resultApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Result Dashboard</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <style>
+    body {
+      font-family: Arial;
+      background-color: #ffcc33  ;
+      padding: 20px;
+    }
+    .passed {
+      color: green;
+      font-weight: bold;
+    }
+    .failed {
+      color: red;
+      font-weight: bold;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+    }
+    th {
+      background-color: #eee;
+    }
+  </style>
+</head>
+<body ng-controller="StudentController">
+
+  <h2>Student Result Dashboard</h2>
+
+  <button ng-click="togglePassed()">
+    {{ showOnlyPassed ? 'Show All Students' : 'Show Only Passed Students' }}
+  </button>
+
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Department</th>
+      <th>Total Marks</th>
+      <th>Status</th>
+    </tr>
+    <tr ng-repeat="student in students | filter:showOnlyPassed ? passFilter : ''">
+      <td>{{ student.name }}</td>
+      <td>{{ student.department }}</td>
+      <td>{{ student.marks }}</td>
+      <td ng-class="student.marks > 40 ? 'passed' : 'failed'">
+        {{ student.marks > 40 ? 'Pass' : 'Fail' }}
+      </td>
+    </tr>
+  </table>
+
+  <script>
+    angular.module('resultApp', [])
+      .controller('StudentController', function($scope) {
+        $scope.students = [
+          { name: 'Arun', department: 'CSE', marks: 35 },
+          { name: 'Divya', department: 'ECE', marks: 78 },
+          { name: 'Ravi', department: 'IT', marks: 55 },
+          { name: 'Meena', department: 'EEE', marks: 30 },
+          { name: 'Vikram', department: 'MECH', marks: 92 }
+        ];
+
+        $scope.showOnlyPassed = false;
+
+        $scope.togglePassed = function() {
+          $scope.showOnlyPassed = !$scope.showOnlyPassed;
+        };
+
+        // Custom filter to return only passed students
+        $scope.passFilter = function(student) {
+          return student.marks > 40;
+        };
+      });
+  </script>
+
+</body>
+</html>

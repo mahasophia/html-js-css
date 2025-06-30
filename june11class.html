@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Emoji Key Reaction</title>
+</head>
+<body>
+
+  <h2>Press 's' or 'c' to see emoji reactions!</h2>
+  <p id="result" style="font-size: 30px;"></p>
+
+  <script>
+    document.addEventListener('keydown', function(event) {
+      let reaction = '';
+
+      switch(event.key) {
+        case 's':
+          reaction = "😊";
+          break;
+        case 'c':
+          reaction = "😭";
+          break;
+        default:
+          reaction = "🔫 Hey!!! press any valid key";
+      }
+
+      document.getElementById('result').innerHTML = reaction;
+    });
+  </script>
+
+</body>
+</html>

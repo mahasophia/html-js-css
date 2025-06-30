@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Home Light</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #111;
+            transition: background 1s ease;
+        }
+        .container {
+            text-align: center;
+        }
+        .bulb {
+            width: 100px;
+            height: 100px;
+            background: url('bulb-off.jpeg') no-repeat center;
+            background-size: cover;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0);
+            transition: background 1s ease, box-shadow 1s ease;
+       }
+
+        .toggle {
+            margin-top: 20px;
+        }
+        input[type="checkbox"] {
+            transform: scale(1.5);
+        }
+        @keyframes flicker {
+            0% { opacity: 1; }
+            25% { opacity: 0.8; }
+            50% { opacity: 1; }
+            75% { opacity: 0.9; }
+            100% { opacity: 1; }
+        }
+        .on {
+            box-shadow: 0 0 50px yellow;
+            animation: flicker 0.2s infinite alternate;
+        }
+        .lit {
+            background-color: rgba(255, 255, 150, 0.2) !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="bulb" id="bulb"></div>
+        <label class="toggle">
+            <input type="checkbox" id="switch"> Toggle Light
+        </label>
+    </div>
+    <script>
+        const bulb = document.getElementById("bulb");
+        const toggleSwitch = document.getElementById("switch");
+        
+        toggleSwitch.addEventListener("change", () => {
+            if (toggleSwitch.checked) {
+                bulb.classList.add("on");
+                document.body.classList.add("lit");
+            } else {
+                bulb.classList.remove("on");
+                document.body.classList.remove("lit");
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Best Place For Vacation</title>
+  <script>
+    function showChennai() {
+      document.getElementById("placeImage").src = "mariana.jpeg";
+      document.getElementById("placeText").innerHTML = `
+        <h3>Chennai</h3>
+        <p>
+          Chennai, the capital city of Tamil Nadu, is a vibrant metropolitan city located on the Coromandel Coast off the Bay of Bengal. 
+          Known for its deep-rooted traditions and cultural heritage, Chennai is also a major IT and industrial hub. 
+          The city is home to Marina Beach, one of the longest urban beaches in the world, and renowned landmarks such as Fort St. George, Kapaleeshwarar Temple, and San Thome Basilica.
+          It also has a strong music and dance scene, especially the classical Carnatic music and Bharatanatyam. Chennai offers a perfect blend of the old and the new.
+        </p>
+      `;
+    }
+
+    function showMadurai() {
+      document.getElementById("placeImage").src = "meenashki.jpeg";
+      document.getElementById("placeText").innerHTML = `
+        <h3>Madurai</h3>
+        <p>
+          Madurai, often referred to as the "Athens of the East", is one of the oldest continuously inhabited cities in the world. 
+          Located on the banks of the Vaigai River in Tamil Nadu, Madurai is famous for its Dravidian-style architecture, especially the magnificent Meenakshi Amman Temple with its towering gopurams and intricate carvings.
+          The city is a major pilgrimage and cultural center, steeped in Tamil traditions, festivals, and classical literature. 
+          From bustling markets and street food to spiritual serenity, Madurai offers a rich travel experience steeped in history and devotion.
+        </p>
+		<button onclick="alert('Madurai: A spiritual and cultural gem of South India.')">Madurai</button>
+      `;
+    }
+  </script>
+</head>
+<body style="font-family: Arial, sans-serif; padding: 20px;">
+
+  <h1><b>Best Place For Vacation</b></h1>
+  <h2><b>Click on your favourite place to know more about it</b></h2>
+
+  <button onclick="alert('Chennai: A coastal metro with heritage and modern charm.')">Chennai</button>
+  <button onclick="showMadurai()">Madurai</button>
+
+  <br><br>
+
+  <img id="placeImage" src="mariana.jpeg" alt="Vacation Place" width="500" height="350">
+
+  <div id="placeText" style="margin-top: 20px;">
+    <h3>Chennai</h3>
+    <p>
+      Chennai, the capital city of Tamil Nadu, is a vibrant metropolitan city located on the Coromandel Coast off the Bay of Bengal. 
+      Known for its deep-rooted traditions and cultural heritage, Chennai is also a major IT and industrial hub. 
+      The city is home to Marina Beach, one of the longest urban beaches in the world, and renowned landmarks such as Fort St. George, Kapaleeshwarar Temple, and San Thome Basilica.
+      It also has a strong music and dance scene, especially the classical Carnatic music and Bharatanatyam. Chennai offers a perfect blend of the old and the new.
+    </p>
+  </div>
+
+</body>
+</html>

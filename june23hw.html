@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="moodApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Mood Tracker Dashboard</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(to right, #c2e9fb, #a1c4fd);
+      font-family: 'Segoe UI', sans-serif;
+      padding-top: 50px;
+    }
+    .dashboard {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    .mood-bar {
+      height: 25px;
+      background: #f1f1f1;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      position: relative;
+    }
+    .mood-fill {
+      height: 100%;
+      border-radius: 10px;
+      text-align: right;
+      padding-right: 10px;
+      color: white;
+      font-size: 0.9rem;
+      line-height: 25px;
+    }
+  </style>
+</head>
+<body ng-controller="MoodController">
+  <div class="dashboard" ng-if="!loading">
+    <h4 class="text-center">Mood Tracker – {{ moodData.date }}</h4>
+    <p class="text-muted text-center">Dominant Mood: <strong>{{ moodData.dominant_mood }}</strong></p>
+    
+    <div ng-repeat="(mood, count) in moodData.moods">
+      <label class="form-label">{{ mood | uppercase }} ({{ count }})</label>
+      <div class="mood-bar">
+        <div class="mood-fill" ng-style="getMoodStyle(mood, count)">
+          {{ (count / totalMoods * 100) | number:0 }}%
+        </div>
+      </div>
+    </div>
+    
+    <p class="text-muted text-end">Last updated: {{ lastUpdated | date:'mediumTime' }}</p>
+  </div>
+
+  <div class="text-center" ng-if="loading">
+    <div class="spinner-border text-info" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <p class="mt-2">Loading mood data...</p>
+  </div>
+
+  <script>
+    var app = angular.module('moodApp', []);
+
+    app.controller('MoodController', function($scope, $http, $timeout, $interval) {
+      $scope.loading = true;
+      $scope.moodData = {};
+      $scope.totalMoods = 0;
+
+      const apiUrl = "https://mocki.io/v1/37778570-43c7-4620-a730-aa34088b34d0"; // Replace with your actual mock URL
+
+      const moodColors = {
+        happy: "#4caf50",
+        sad: "#2196f3",
+        tired: "#ff9800",
+        excited: "#9c27b0",
+        angry: "#f44336"
+      };
+
+      $scope.getMoodStyle = function(mood, count) {
+        const percent = (count / $scope.totalMoods) * 100;
+        return {
+          width: percent + '%',
+          background: moodColors[mood] || '#607d8b'
+        };
+      };
+
+      function fetchMoodData() {
+        $scope.loading = true;
+        $http.get(apiUrl).then(function(response) {
+          $timeout(function() {
+            $scope.moodData = response.data;
+            $scope.totalMoods = Object.values(response.data.moods).reduce((a, b) => a + b, 0);
+            $scope.lastUpdated = new Date();
+            $scope.loading = false;
+          }, 2000);
+        }, function(error) {
+          console.error("Failed to fetch mood data", error);
+          $scope.loading = false;
+        });
+      }
+
+      fetchMoodData();
+      $interval(fetchMoodData, 30000); // Refresh every 30 seconds
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Access Check Example</title>
+</head>
+<body style="font-family: Arial; padding: 20px;">
+
+  <h2>Access Check</h2>
+
+  <p id="p1"></p>
+
+  <button type="button" onclick="checkAccess()">Check Access</button>
+
+  <script>
+    function checkAccess() {
+      let age = 15;
+      let allowed = false; 
+      if (age > 18) {
+        document.getElementById("p1").innerText = "Access granted";
+      } else {
+        document.getElementById("p1").innerText = "Access denied";
+      }
+    }
+  </script>
+
+</body>
+</html>

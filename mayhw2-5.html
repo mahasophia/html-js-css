@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Themed Web Page</title>
+  <style>
+    :root {
+      --primary-color: #2c3e50;
+      --secondary-color: #3498db;
+      --bg-color: #ecf0f1;
+      --text-color: #2c3e50;
+
+      --font-family: 'Segoe UI', sans-serif;
+      --font-size: 16px;
+
+      --padding: 1rem;
+      --margin: 1rem;
+    }
+
+    body {
+      font-family: var(--font-family);
+      font-size: var(--font-size);
+      margin: 0;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+    }
+
+    header, footer {
+      background-color: var(--primary-color);
+      color: white;
+      text-align: center;
+      padding: var(--padding);
+    }
+
+    nav {
+      background-color: var(--secondary-color);
+      padding: var(--padding);
+      text-align: center;
+    }
+
+    nav a {
+      margin: 0 var(--margin);
+      color: white;
+      text-decoration: none;
+    }
+
+    .content {
+      padding: var(--padding);
+      text-align: center;
+    }
+
+    .btn {
+      padding: 0.5rem 1rem;
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin-top: var(--margin);
+    }
+
+    .btn:hover {
+      background-color: var(--secondary-color);
+    }
+
+    /* Summer Theme Override */
+    .summer-theme {
+      --primary-color: #ff8c00;
+      --secondary-color: #ffd700;
+      --bg-color: #fff8dc;
+      --text-color: #5a3e1b;
+    }
+  </style>
+</head>
+<body class="summer-theme">
+  <header>
+    <h1>Sunshine Co.</h1>
+  </header>
+
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Products</a>
+    <a href="#">Contact</a>
+  </nav>
+
+  <section class="content">
+    <h2>Welcome to Our Summer Vibes</h2>
+    <p>Discover our latest summer styles, packed with sunny tones and breezy comfort.</p>
+    <a href="https://www.sunshineco.com/summer-collection" class="btn">Shop Now</a>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Sunshine Co. All rights reserved.</p>
+  </footer>
+</body>
+</html>

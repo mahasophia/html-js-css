@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Employee salary</title>
+</head>
+<body style="background-color:lightblue">
+  <h2>Employee salary</h2>
+  <form id="EmployeeForm">
+    <input type="text" id="name" placeholder="Name" required>
+    <input type="number" id="salary" placeholder="salary" required>
+    <button type="submit">ADD</button>
+  </form>
+  <h3>Employee:</h3>
+  <div id="Employeelist"></div>
+  <script>
+    const Employees = [];
+    const form = document.getElementById("EmployeeForm");
+    const list = document.getElementById("Employeelist");
+
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+      list.innerHTML = '';
+      const name = document.getElementById("name").value;
+      const salary = parseInt(document.getElementById("salary").value);
+      Employees.push({ name, salary });
+      Employees.forEach((Employee, index) => {
+        const status = Employee.salary >= 10000? "highersalary" : "lowersalary";
+        list.innerHTML += `
+          <p>${Employee.name} - ${Employee.salary} (${status}) 
+          <button onclick="removeEmployee(${index})">Remove</button></p>
+        `;
+      });
+      form.reset();
+    });
+
+    function removeEmployee(index) {
+      Employees.splice(index, 1);
+      list.innerHTML = '';
+      Employees.forEach((Employee, i) => {
+        const status = Employee.salary >= 10000 ? "highersalary" : "lowersalary";
+        list.innerHTML += `
+          <p>${Employee.name} - ${Employee.salary} (${status}) 
+          <button onclick="removeEmployee(${i})">Remove</button></p>
+        `;
+      });
+    }
+  </script>
+</body>
+</html>

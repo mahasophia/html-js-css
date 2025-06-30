@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Discount Calculator</title>
+  <style>
+    body {
+      background: linear-gradient(to right, #a1c4fd, #c2e9fb);
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 40px;
+    }
+
+    .container {
+      background-color: #ffffff;
+      border-radius: 15px;
+      padding: 30px;
+      width: 350px;
+      margin: auto;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+
+    input {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    img {
+      width: 100px;
+      margin-bottom: 15px;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #333;
+    }
+
+    h1 {
+      color: #003366;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🛍️ Discount Calculator</h1>
+  <img src="https://cdn-icons-png.flaticon.com/512/1170/1170678.png" alt="Shopping Icon">
+
+  <div class="container">
+    <input type="text" id="name" placeholder="Enter your name" />
+    <input type="number" id="total" placeholder="Enter cart total" />
+    <button onclick="calculateDiscount()">Calculate</button>
+
+    <div id="result"></div>
+  </div>
+
+  <script>
+    function calculateDiscount() {
+      var customerName = document.getElementById("name").value;
+      var cartTotal = parseFloat(document.getElementById("total").value);
+      var discount = 0;
+      var finalPrice = 0;
+
+      if (cartTotal >= 100) {
+        discount = 0.20;
+      } else if (cartTotal >= 50) {
+        discount = 0.10;
+      }
+
+      finalPrice = cartTotal - (cartTotal * discount);
+
+      document.getElementById("result").innerHTML =
+        "<p><strong>Customer:</strong> " + customerName + "</p>" +
+        "<p><strong>Cart Total:</strong> ₹" + cartTotal.toFixed(2) + "</p>" +
+        "<p><strong>Discount:</strong> " + (discount * 100) + "%</p>" +
+        "<p><strong>Final Price:</strong> ₹" + finalPrice.toFixed(2) + "</p>";
+    }
+  </script>
+
+</body>
+</html>

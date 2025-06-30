@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hospital Waiting Room</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: #f8f9fa;
+      padding: 30px;
+    }
+    .container {
+      max-width: 600px;
+    }
+    .queue-box {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #ccc;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="queue-box text-center">
+      <h3 class="mb-4">🏥 Hospital Waiting Room</h3>
+
+      <div class="form-group">
+        <input type="text" id="patientName" class="form-control" placeholder="Enter patient name">
+      </div>
+
+      <div class="mb-3">
+        <button class="btn btn-success mr-2" onclick="addPatient()">Add Patient</button>
+        <button class="btn btn-warning mr-2" onclick="callNext()">Call Next</button>
+        <button class="btn btn-danger mr-2" onclick="addEmergency()">Add Emergency</button>
+        <button class="btn btn-secondary" onclick="removeLast()">Patient Leaves</button>
+      </div>
+
+      <h5 class="text-primary">Current Queue:</h5>
+      <ul id="queueList" class="list-group"></ul>
+    </div>
+  </div>
+
+  <script>
+    let queue = [];
+
+    function updateQueueDisplay() {
+      const list = document.getElementById("queueList");
+      list.innerHTML = "";
+
+      if (queue.length === 0) {
+        list.innerHTML = "<li class='list-group-item text-muted'>No patients waiting.</li>";
+      } else {
+        queue.forEach((patient, index) => {
+          const item = document.createElement("li");
+          item.className = "list-group-item";
+          item.textContent = `${index + 1}. ${patient}`;
+          list.appendChild(item);
+        });
+      }
+    }
+
+    function addPatient() {
+      const name = document.getElementById("patientName").value.trim();
+      if (name) {
+        queue.push(name); // Add to end
+        updateQueueDisplay();
+        document.getElementById("patientName").value = "";
+      }
+    }
+
+    function callNext() {
+      if (queue.length > 0) {
+        const called = queue.shift(); // Remove from front
+        alert(`${called} is called to the doctor.`);
+        updateQueueDisplay();
+      } else {
+        alert("No patients in queue.");
+      }
+    }
+
+    function addEmergency() {
+      const name = document.getElementById("patientName").value.trim();
+      if (name) {
+        queue.unshift(name); // Add to front
+        updateQueueDisplay();
+        document.getElementById("patientName").value = "";
+      }
+    }
+
+    function removeLast() {
+      if (queue.length > 0) {
+        const removed = queue.pop(); // Remove from end
+        alert(`${removed} left the queue.`);
+        updateQueueDisplay();
+      } else {
+        alert("No patients to remove.");
+      }
+    }
+
+    updateQueueDisplay(); // Initialize display
+  </script>
+</body>
+</html>

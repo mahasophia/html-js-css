@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Interactive Box Game</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 50px;
+      background-color: #f5f5f5;
+    }
+
+    #box {
+      width: 200px;
+      height: 200px;
+      background-color: lightgray;
+      margin: auto;
+      transition: all 0.3s ease;
+      border: 3px solid transparent;
+    }
+
+    #box.highlight {
+      border-color: yellow;
+    }
+
+    #box.big {
+      width: 300px;
+      height: 300px;
+    }
+
+    h2 {
+      margin-bottom: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🎮 Interactive Box Game</h2>
+  <div id="box"></div>
+
+  <script>
+    const box = document.getElementById("box");
+
+    // Toggle size on click
+    box.addEventListener("click", () => {
+      box.classList.toggle("big");
+    });
+
+    // Highlight on mouseover
+    box.addEventListener("mouseover", () => {
+      box.classList.add("highlight");
+    });
+
+    // Remove highlight on mouseout
+    box.addEventListener("mouseout", () => {
+      box.classList.remove("highlight");
+    });
+
+    // Keydown for color change
+    document.addEventListener("keydown", (e) => {
+      const key = e.key.toLowerCase();
+      if (key === "r") {
+        box.style.backgroundColor = "red";
+      } else if (key === "g") {
+        box.style.backgroundColor = "green";
+      } else if (key === "b") {
+        box.style.backgroundColor = "blue";
+      }
+    });
+  </script>
+
+</body>
+</html>

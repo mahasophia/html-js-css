@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app1">
+<head>
+  <meta charset="UTF-8">
+  <title>Form Validation</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular.min.js"></script>
+</head>
+<body ng-controller="c1">
+  <form name="f1" novalidate>
+    <b>Username:</b><br>
+    <input type="text" name="userName" ng-model="uName" required><br>
+
+    <span style="color:red;" ng-show="f1.userName.$dirty && f1.userName.$invalid">
+      <span ng-show="f1.userName.$error.required">Username is required</span>
+    </span>
+    <br><br>
+
+    <b>Email:</b><br>
+    <input type="email" name="eMail" ng-model="eMail" required><br>
+
+    <span style="color:red;" ng-show="f1.eMail.$dirty && f1.eMail.$invalid">
+      <span ng-show="f1.eMail.$error.required">Email is required</span><br>
+      <span ng-show="f1.eMail.$error.email">Invalid address</span>
+    </span>
+    <br><br>
+
+    <input type="submit" value="Submit"
+      ng-disabled="f1.userName.$dirty && f1.userName.$invalid || f1.eMail.$dirty && f1.eMail.$invalid">
+  </form>
+
+  <script>
+    angular.module("app1", []).controller("c1", function($scope) {
+      $scope.uName = "maha";
+      $scope.eMail = "mahasophia@gmail.com";
+    });
+  </script>
+</body>
+</html>

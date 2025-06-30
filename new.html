@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>🎨 Color Mood Generator</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      transition: background 0.5s ease;
+      color: #fff;
+      text-align: center;
+    }
+
+    .card {
+      background: rgba(0,0,0,0.3);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    }
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    .color-code {
+      font-size: 24px;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+
+    .emoji {
+      font-size: 40px;
+      margin: 10px 0;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background: white;
+      color: #333;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1 id="colorName">Click to get a mood color</h1>
+    <div class="emoji" id="emoji">🎲</div>
+    <div class="color-code" id="hexCode">#------</div>
+    <p id="meaning">Let’s find your vibe!</p>
+    <button onclick="generateMood()">Generate Mood</button>
+  </div>
+
+  <script>
+    const colors = [
+      { name: "Calm Blue", hex: "#3F51B5", emoji: "🧘‍♀️", meaning: "Feeling calm and peaceful." },
+      { name: "Happy Yellow", hex: "#FFEB3B", emoji: "😄", meaning: "Joyful and full of energy!" },
+      { name: "Love Red", hex: "#F44336", emoji: "❤️", meaning: "You’re radiating love today!" },
+      { name: "Fresh Green", hex: "#4CAF50", emoji: "🌿", meaning: "You feel fresh and alive." },
+      { name: "Creative Purple", hex: "#9C27B0", emoji: "🎨", meaning: "Creative energy is flowing!" },
+      { name: "Cool Cyan", hex: "#00BCD4", emoji: "❄️", meaning: "Chill vibes only." },
+      { name: "Mystery Black", hex: "#212121", emoji: "🕶️", meaning: "Mysterious and stylish today." },
+      { name: "Hopeful Orange", hex: "#FF9800", emoji: "☀️", meaning: "You’re shining with hope." }
+    ];
+
+    function generateMood() {
+      const mood = colors[Math.floor(Math.random() * colors.length)];
+      document.body.style.background = mood.hex;
+      document.getElementById("colorName").innerText = mood.name;
+      document.getElementById("hexCode").innerText = mood.hex;
+      document.getElementById("emoji").innerText = mood.emoji;
+      document.getElementById("meaning").innerText = mood.meaning;
+    }
+  </script>
+</body>
+</html>
