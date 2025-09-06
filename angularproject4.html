@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html ng-app="kuralApp">
+<head>
+  <meta charset="UTF-8">
+  <title>📜 Thirukkural Explorer</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #808000;
+      color: #808000;
+      padding: 30px;
+      text-align: center;
+    }
+
+    .container {
+      background: #f0e130;
+      max-width: 750px;
+      margin: auto;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    select {
+      padding: 10px;
+      border-radius: 8px;
+      font-size: 1em;
+      margin-bottom: 20px;
+      border: none;
+    }
+
+    .kural-card {
+      background:#800000;
+      border-radius: 12px;
+      padding: 20px;
+      margin: 10px 0;
+      text-align: left;
+      color: #f1f1f1;
+      position: relative;
+    }
+
+    .kural-tamil {
+      font-size: 1.1em;
+      font-weight: bold;
+    }
+
+    .kural-english {
+      margin-top: 8px;
+      font-style: italic;
+      color: #fcd6c8;
+    }
+
+    .delete-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      background-color:lightblue;
+      color: white;
+      border: none;
+      padding: 6px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .delete-btn:hover {
+      background-color: black;
+    }
+  </style>
+</head>
+<body ng-controller="KuralController">
+  <div class="container">
+    <h2>📜 Thirukkural Explorer</h2>
+
+    <label>Select Category: </label>
+    <select ng-model="selectedCategory">
+      <option value="">-- Choose a category --</option>
+      <option value="Aram">Aram (Virtue)</option>
+      <option value="Porul">Porul (Wealth)</option>
+      <option value="Kamam">Kamam (Love)</option>
+      <option value="Motivation">Motivation (உந்துதல்)</option>
+    </select>
+
+    <div class="kural-card" ng-repeat="kural in filteredKurals() track by $index">
+      <button class="delete-btn" ng-click="deleteKural($index)">Delete</button>
+      <div class="kural-tamil">{{ kural.line1 }}<br>{{ kural.line2 }}</div>
+      <div class="kural-english">→ {{ kural.explanation }}</div>
+    </div>
+  </div>
+
+  <script>
+    angular.module('kuralApp', [])
+      .controller('KuralController', function($scope) {
+        $scope.selectedCategory = '';
+
+        $scope.kurals = [
+          // Aram
+          {
+            category: 'Aram',
+            line1: 'அகர முதல எழுத்தெல்லாம் ஆதி',
+            line2: 'பகவன் முதற்றே உலகு',
+            explanation: 'Just as A is the first of all letters, God is the beginning of all things.'
+          },
+          {
+            category: 'Aram',
+            line1: 'தெய்வத்தான் ஆகா தெனினும் முயற்சி',
+            line2: 'மெய்வருத்தக் கூலி தரும்',
+            explanation: 'Even if fate fails, effort brings results.'
+          },
+          // Porul
+          {
+            category: 'Porul',
+            line1: 'அருள்சேர்ந்த நெஞ்சினார்க்கு அல்லால் பிறிது',
+            line2: 'பொருள்சேர்ந்த பொருள் எவன் கொளல்',
+            explanation: 'Only the virtuous gain meaningful wealth.'
+          },
+          // Kamam
+          {
+            category: 'Kamam',
+            line1: 'காதலர் தம்மை அறியார் எனினும்',
+            line2: 'மோதல் அவர் குறை இன்றே',
+            explanation: 'Even if lovers don’t admit it, their affection is evident.'
+          },
+          // Motivation
+          {
+            category: 'Motivation',
+            line1: 'உழுவேன் என்பவன் வாழ்க்கை எழுவேன்',
+            line2: 'எனவொரு வண்ணம் கொளல்',
+            explanation: 'One who toils will rise — this is the law of life.'
+          },
+          {
+            category: 'Motivation',
+            line1: 'முயற்சி துணிவுடன் வாழும் மனிதர்',
+            line2: 'முயற்சி தோல்விக்கு வழி அல்ல',
+            explanation: 'With courage and effort, no failure lasts.'
+          }
+        ];
+
+        $scope.filteredKurals = function () {
+          if (!$scope.selectedCategory) return [];
+          return $scope.kurals.filter(k => k.category === $scope.selectedCategory);
+        };
+
+        $scope.deleteKural = function (index) {
+          const visibleKurals = $scope.filteredKurals();
+          const globalIndex = $scope.kurals.indexOf(visibleKurals[index]);
+          if (globalIndex > -1) {
+            $scope.kurals.splice(globalIndex, 1);
+          }
+        };
+      });
+  </script>
+</body>
+</html>
